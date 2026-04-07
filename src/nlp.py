@@ -2,7 +2,7 @@ from transformers import pipeline
 
 emotion_model = pipeline(
     "text-classification",
-    model="j-hartmann/emotion-english-distilroberta-base",
+    model="mrm8488/distilbert-base-multilingual-cased-finetuned-emotion",
     top_k=None
 )
 

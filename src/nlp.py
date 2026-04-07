@@ -4,6 +4,7 @@ emotion_model = pipeline(
     "text-classification",
     model="mrm8488/distilbert-base-multilingual-cased-finetuned-emotion",
     top_k=None
+    use_auth_token=os.environ.get("HUGGINGFACE_TOKEN")
 )
 
 def extract_emotions(text):

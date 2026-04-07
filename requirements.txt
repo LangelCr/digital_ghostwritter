@@ -7,4 +7,3 @@ joblib
 python-dotenv
 openai
 transformers
-pillow==10.3.0

@@ -1,11 +1,9 @@
 from transformers import pipeline
-import os
 
 emotion_model = pipeline(
     "text-classification",
-    model="mrm8488/distilbert-base-multilingual-cased-finetuned-emotion",
-    top_k=None,
-    use_auth_token=os.environ.get("HUGGINGFACE_TOKEN")
+    model="j-hartmann/emotion-english-distilroberta-base",
+    top_k=None
 )
 
 def extract_emotions(text):

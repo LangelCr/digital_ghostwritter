@@ -63,15 +63,15 @@ if st.button("Analizar"):
         }
 
         # Llamada a tu LLM para análisis + recomendaciones + continuación de letra
-        # advice = generate_combined_music_advice(result_text, result_audio, text)
-        advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
+        advice = generate_combined_music_advice(result_text, result_audio, text)
+        # advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
     
 
     if result_text:
         
-        # advice = generate_music_advice(result_text, text)
+        advice = generate_music_advice(result_text, text)
         
-        advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
+        #advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
 
         scores, translated = result_text["emotions"]
         fig = px.bar(
@@ -84,9 +84,9 @@ if st.button("Analizar"):
         
     elif result_audio:
 
-        # advice = generate_music_advice_audio(result_audio)
+        advice = generate_music_advice_audio(result_audio)
 
-        advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
+        #advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
 
         chords = result_audio["chords"]
         st.subheader("🎹 Progresión sugerida")

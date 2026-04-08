@@ -113,74 +113,74 @@ def generate_combined_music_advice(result_text, result_audio, user_text):
     tempo_audio = result_audio.get("tempo") if result_audio else None
 
     # Preparar prompt para el LLM
-    #prompt = f"""
-    #Eres un productor musical profesional.
+    prompt = f"""
+    Eres un productor musical profesional.
 
-    #USO:
-    #- Analiza letra y audio de la canción.
-    #- Entrega recomendaciones completas, sin preguntas ni cierres conversacionales.
-    #- Incluye análisis lírico, continuación de letra con rimas, estilo sugerido, progresiones, key y consejos prácticos.
+    USO:
+    - Analiza letra y audio de la canción.
+    - Entrega recomendaciones completas, sin preguntas ni cierres conversacionales.
+    - Incluye análisis lírico, continuación de letra con rimas, estilo sugerido, progresiones, key y consejos prácticos.
 
-    #Datos disponibles:
+    Datos disponibles:
 
-    #Letra del usuario:
-    #\"\"\"{user_text}\"\"\"
+    Letra del usuario:
+    \"\"\"{user_text}\"\"\"
 
-    #Análisis de letra:
-    #- Mood: {mood}
-    #- Valence: {valence}
-    #- Energy: {energy}
-    #- Mode: {mode}
-    #- Keys sugeridas: {keys_text}#
+    Análisis de letra:
+    - Mood: {mood}
+    - Valence: {valence}
+    - Energy: {energy}
+    - Mode: {mode}
+    - Keys sugeridas: {keys_text}#
 
-    #Análisis de audio:
-    #- Key detectada: {key_audio}
-    #- Acordes: {chords_audio}
-    #- Tempo: {tempo_audio}
+    Análisis de audio:
+    - Key detectada: {key_audio}
+    - Acordes: {chords_audio}
+    - Tempo: {tempo_audio}
 
-    #Instrucciones:
-    #1. Explica brevemente el mood y la energía de la canción.
-    #2. Recomienda un estilo o género musical acorde.
-    #3. Sugiere progresiones de acordes o "vibe" basadas en key detectada.
-    #4. Propón continuación de letra con rimas coherentes.
-    #5. Da consejos prácticos: tempo, instrumentos, dinámica, armonización.
+    Instrucciones:
+    1. Explica brevemente el mood y la energía de la canción.
+    2. Recomienda un estilo o género musical acorde.
+    3. Sugiere progresiones de acordes o "vibe" basadas en key detectada.
+    4. Propón continuación de letra con rimas coherentes.
+    5. Da consejos prácticos: tempo, instrumentos, dinámica, armonización.
 
-    #Responde en español, tono profesional pero cercano, en un solo bloque.
-    #"""
+    Responde en español, tono profesional pero cercano, en un solo bloque.
+    """
 
     # Llamada al LLM (simulación si quieres probar offline)
-    ## Descomenta la sección de OpenAI o HF si quieres usar tu modelo real
+    ## Descomenta la sección de OpenAI o HF si quieres usar el modelo real
     #"""
-    #response = client.chat.completions.create(
-    #    model="gpt-4.1-mini",
-    #    messages=[
-    #        {"role": "system", "content": "Eres un experto en producción musical."},
-    #        {"role": "user", "content": prompt}
-    #    ],
-    #    temperature=0.7
-    #)
-    #return response.choices[0].message.content
-    """
-    """
+    response = client.chat.completions.create(
+        model="gpt-4.1-mini",
+        messages=[
+            {"role": "system", "content": "Eres un experto en producción musical."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.7
+    )
+    return response.choices[0].message.content
+    #"""
+    #"""
 
     # Para pruebas offline / sin consumir créditos
-    simulated_response = f"""
-    🎵 Análisis lírico:
-    Mood: {mood} - Valence: {valence}, Energy: {energy}
-    Modo: {mode}, Keys: {', '.join(keys_text)}
+    #simulated_response = f"""
+    #🎵 Análisis lírico:
+    #Mood: {mood} - Valence: {valence}, Energy: {energy}
+    #Modo: {mode}, Keys: {', '.join(keys_text)}
 
-    🎸 Estilo sugerido: Pop/Rock moderno, con instrumentación ligera y sintetizadores.
+    #🎸 Estilo sugerido: Pop/Rock moderno, con instrumentación ligera y sintetizadores.
 
-    🎹 Progresión recomendada: {' → '.join(chords_audio) if chords_audio else 'C - G - Am - F'}
+    #🎹 Progresión recomendada: {' → '.join(chords_audio) if chords_audio else 'C - G - Am - F'}
 
-    ✍️ Continuación de letra (rimas sugeridas):
-    "Y en el viento escucho tu voz,
-    caminando juntos hacia la luz."
+    #✍️ Continuación de letra (rimas sugeridas):
+    #"Y en el viento escucho tu voz,
+    #caminando juntos hacia la luz."
 
-    💡 Consejos prácticos:
-    - Tempo: {tempo_audio} BPM (aprox.)
-    - Instrumentos sugeridos: guitarra, bajo, batería, sintetizador
-    - Alterna acordes mayores y menores para generar tensión y resolución.
-    - Mantén dinámica progresiva según mood y energía detectada.
-    """
-    return simulated_response
+    #💡 Consejos prácticos:
+    #- Tempo: {tempo_audio} BPM (aprox.)
+    #- Instrumentos sugeridos: guitarra, bajo, batería, sintetizador
+    #- Alterna acordes mayores y menores para generar tensión y resolución.
+    #- Mantén dinámica progresiva según mood y energía detectada.
+    #"""
+    #return simulated_response

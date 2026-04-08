@@ -1,4 +1,7 @@
 from transformers import pipeline
+from deep_translator import GoogleTranslator
+
+
 
 emotion_model = pipeline(
     "text-classification",
@@ -7,8 +10,11 @@ emotion_model = pipeline(
 )
 
 def extract_emotions(text):
+
+    translated = GoogleTranslator(source='auto', target='en').translate(text)
+
     result = emotion_model(
-        text,
+        translated,
         truncation=True,
         max_length=300
     )[0]
@@ -20,4 +26,5 @@ def extract_emotions(text):
     for e in all_emotions:
         scores.setdefault(e, 0)
 
-    return scores
+    return scores, translated
+

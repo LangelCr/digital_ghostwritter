@@ -63,19 +63,20 @@ if st.button("Analizar"):
         }
 
         # Llamada a tu LLM para análisis + recomendaciones + continuación de letra
-        advice = generate_combined_music_advice(result_text, result_audio, text)
+        # advice = generate_combined_music_advice(result_text, result_audio, text)
+        advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
     
 
     if result_text:
         
-        advice = generate_music_advice(result_text, text)
+        # advice = generate_music_advice(result_text, text)
         
-        # advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
+        advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
 
-        emotions = result_text["emotions"]
+        scores, translated = result_text["emotions"]
         fig = px.bar(
-        x=list(emotions.keys()),
-        y=list(emotions.values()),
+        x=list(scores.keys()),
+        y=list(scores.values()),
         labels={'x':'Emoción', 'y':'Valor'},
         title="🎭 Distribución de emociones de la letra"
         )
@@ -83,9 +84,9 @@ if st.button("Analizar"):
         
     elif result_audio:
 
-        advice = generate_music_advice_audio(result_audio)
+        # advice = generate_music_advice_audio(result_audio)
 
-        #advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
+        advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
 
         chords = result_audio["chords"]
         st.subheader("🎹 Progresión sugerida")
@@ -124,7 +125,7 @@ if 'result_text' in locals() and result_text:
 
     emotions = result_text.get("emotions", {})
     # Convertir probabilidades a % y redondear
-    emotions_display = {emotion_map[k]: f"{v*100:.1f}%" for k,v in emotions.items()}
+    emotions_display = {emotion_map[k]: f"{v*100:.1f}%" for k,v in scores.items()}
 
     # Mostrar como tabla
     st.sidebar.table(emotions_display.items())

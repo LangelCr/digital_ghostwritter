@@ -9,3 +9,4 @@ openai
 transformers
 torch
 torchvision
+deep_translator

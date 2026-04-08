@@ -65,6 +65,7 @@ if st.button("Analizar"):
         # Llamada a tu LLM para análisis + recomendaciones + continuación de letra
         advice = generate_combined_music_advice(result_text, result_audio, text)
         # advice = "💡 Esto es un resultado simulado para pruebas, no se usó OpenAI."
+        st.json(result_text)
     
 
     if result_text:

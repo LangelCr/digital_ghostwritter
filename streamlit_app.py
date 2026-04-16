@@ -14,8 +14,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-st.title("🎧 Digital Ghostwritter")
 
+
+col1, col2 = st.columns([1, 6])  # ajusta proporciones
+
+with col1:
+    st.image("logo.png", width=60)  # tu archivo PNG
+
+with col2:
+    st.title("🎧 Digital Ghostwritter")
 
 
 mode = st.radio("Modo", ["Letra", "Audio", "Ambos"])
